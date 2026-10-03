@@ -10,10 +10,12 @@ export default function LandingPage(){
                 </div>
                 <div className='navlist'>
                     <p>Join as Guest</p>
-                    <p>Register</p>
-                    <div role='button'>
-                        <p>login</p>
-                    </div>
+                    <Link to='/signup' className='authele'>
+                       Register
+                    </Link>
+                    <Link to='/login' className='authele'>
+                       Login
+                    </Link>
                     
                 </div>
             </nav>
