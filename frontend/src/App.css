@@ -73,6 +73,22 @@ body {
 }
 
 
+.logout-btn {
+  background: transparent;
+  color: #10B981;
+  border: 1px solid #10B981;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #10B981;
+  color: #121212;
+}
+
 /* ================= HERO ================= */
 
 .hero {
@@ -687,4 +703,47 @@ details p {
     height: 40px;
   }
 
+}.notification {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items:center;
+  gap: 12px;
+
+  padding: 18px 30px;
+  min-width: 280px;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  z-index: 1000;
+  animation: popup 0.25s ease;
 }
+
+.notification.success {
+  background: #10B981;
+  color: #121212;
+}
+
+.notification.error {
+  background: #ef4444;
+  color: white;
+}
+
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+

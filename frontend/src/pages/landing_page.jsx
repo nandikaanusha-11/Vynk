@@ -1,12 +1,28 @@
 
 import "../App.css";
-
-import { Link } from 'react-router-dom';
+import {useContext} from "react";
+import { Link, useLocation, useNavigate} from 'react-router-dom';
+import {AuthContext} from "../context/AuthContext.js";
+import Notification from "../components/Notification";
 
 export default function LandingPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+const notification = location.state?.notification;
+  const {user,logout}=useContext(AuthContext);
+
   return (
     <div className="landing">
-
+     {notification && (
+       <Notification
+         message={notification.message}
+          type={notification.type}
+           onClose={()=>{
+              navigate("/",{replace:true,state:null});
+           }}
+        />
+       )}
       {/* ================= NAVBAR ================= */}
 
       <nav className="navbar">
@@ -21,9 +37,18 @@ export default function LandingPage() {
             Login
           </Link>
 
-          <Link to="/signup" className="nav-signup">
+
+           {
+            user&&(
+             <button className="logout-btn" onClick={logout}>Logout</button>
+            )
+           }
+         
+
+            <Link to="/signup" className="nav-signup">
             Sign Up
           </Link>
+
         </div>
 
       </nav>

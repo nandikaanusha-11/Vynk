@@ -19,6 +19,10 @@ const login = async(req,res)=>{
           user.token=token;
           await user.save();
           return res.status(httpStatus.OK).json({token:token});
+    }else{
+      return res.status(httpStatus.UNAUTHORIZED).json({
+        message:"Invalid username or password"
+      });
     }
 
  }
@@ -28,6 +32,7 @@ const login = async(req,res)=>{
 }
 
 const register=async(req,res)=>{
+  console.log(req.body);
     const {name,username,password}=req.body;
 
     try{
